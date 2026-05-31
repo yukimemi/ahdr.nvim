@@ -25,7 +25,23 @@ Neovim-only rewrite of [ahdr.vim](https://github.com/yukimemi/ahdr.vim) (no Deno
 
 ## Install
 
-With [lazy.nvim](https://github.com/folke/lazy.nvim):
+With [rvpm](https://github.com/yukimemi/rvpm) (recommended):
+
+```sh
+rvpm add yukimemi/ahdr.nvim --on-cmd '/^Ahdr.*$/'
+```
+
+Or in `config.toml`:
+
+```toml
+[[plugins]]
+url = "https://github.com/yukimemi/ahdr.nvim"
+on_cmd = ["/^Ahdr.*$/"]
+```
+
+> rvpm doesn't auto-run `setup()` — to register custom generators, call `require("ahdr").setup({ ... })` from a hook file (`plugins/github.com/yukimemi/ahdr.nvim/after.lua`). The bundled generators work without it.
+
+Or with [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
 {
