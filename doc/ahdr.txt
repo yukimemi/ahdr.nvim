@@ -1,0 +1,58 @@
+*ahdr.txt*  Generate header-stamped launcher files from a buffer
+
+==============================================================================
+INTRODUCTION                                                            *ahdr*
+
+ahdr.nvim generates a derived file from the current buffer by prepending a
+header and reshaping the name — most often a PowerShell/cmd polyglot launcher
+(`foo.ps1` -> `foo.cmd`). Pure Lua, Neovim only. Requires Neovim >= 0.10.
+
+==============================================================================
+SETUP                                                             *ahdr-setup*
+
+Generators are keyed by filetype. Defaults ship for `ps1`, `javascript`, and
+`dosbatch`; `setup()` adds your own (user generators come first and override the
+defaults by name).
+
+>lua
+    require("ahdr").setup({
+      notify = false,
+      log_level = "warn",
+      generators = {
+        ps1 = {
+          { name = "default", ext = ".cmd", dst = "../cmd", header = [[...]] },
+        },
+      },
+    })
+<
+
+The output path is `<dst>/<prefix><source-stem><suffix><ext>`, and the file is
+`header` + the current buffer (CRLF when `fileformat` is `dos`). `dst` is
+absolute or relative to the source directory; omitted = alongside the source.
+
+==============================================================================
+COMMANDS                                                       *ahdr-commands*
+
+                                                                       *:Ahdr*
+:Ahdr {name}         Generate the file for generator {name}. `<Tab>` completes
+                     the generators available for the current filetype.
+
+                                                                  *:AhdrWatch*
+:AhdrWatch {name}    Regenerate {name} on every save of the current buffer.
+
+                                                                *:AhdrUnwatch*
+:AhdrUnwatch         Stop regenerating on save.
+
+==============================================================================
+LUA API                                                             *ahdr-api*
+
+    require("ahdr").generate("default")    ~
+    require("ahdr").watch("default")       ~
+    require("ahdr").unwatch()              ~
+
+==============================================================================
+HEALTH                                                           *ahdr-health*
+
+    :checkhealth ahdr
+
+ vim:tw=78:ts=8:ft=help:norl:

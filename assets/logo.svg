@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 160" role="img" aria-label="ahdr — header-stamped launcher files">
+  <title>ahdr — header-stamped launcher files</title>
+
+  <defs>
+    <linearGradient id="ahdr-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f59e0b"/>
+      <stop offset="1" stop-color="#ef6c00"/>
+    </linearGradient>
+  </defs>
+
+  <!-- icon: a file with a stamped launcher header (the `>` terminal band) -->
+  <g>
+    <rect x="22" y="24" width="92" height="112" rx="12" fill="#eef1f5" stroke="#d4d9e0" stroke-width="2"/>
+    <path d="M22 36 a12 12 0 0 1 12 -12 h68 a12 12 0 0 1 12 12 v26 H22 Z" fill="url(#ahdr-g)"/>
+    <path d="M40 38 l10 8 l-10 8" fill="none" stroke="#ffffff" stroke-width="5"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="58" y="50" width="16" height="5" rx="2.5" fill="#ffffff"/>
+    <rect x="36" y="80" width="64" height="7" rx="3.5" fill="#c2c9d2"/>
+    <rect x="36" y="96" width="64" height="7" rx="3.5" fill="#c2c9d2"/>
+    <rect x="36" y="112" width="40" height="7" rx="3.5" fill="#c2c9d2"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="150" y="94"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-weight="700" font-size="60" letter-spacing="-1.5"
+        fill="#1a1a1a">ahdr</text>
+
+  <!-- tagline -->
+  <text x="152" y="122"
+        font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif"
+        font-style="italic" font-size="15"
+        fill="#5a5a5a">header-stamped launcher files</text>
+</svg>
