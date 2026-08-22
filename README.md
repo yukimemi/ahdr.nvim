@@ -37,9 +37,10 @@ Or in `config.toml`:
 [[plugins]]
 url = "https://github.com/yukimemi/ahdr.nvim"
 on_cmd = ["/^Ahdr.*$/"]
+opts = {}
 ```
 
-> rvpm doesn't auto-run `setup()` — to register custom generators, call `require("ahdr").setup({ ... })` from a hook file (`plugins/github.com/yukimemi/ahdr.nvim/after.lua`). The bundled generators work without it.
+> `setup()` is **optional** — the bundled generators work without it; call `require("ahdr").setup(...)` only to register custom generators. **rvpm >= 3.45.0 handles it for you** — put `opts = {}` (or your options) in the `[[plugins]]` entry and rvpm calls `require("ahdr").setup(<opts>)` right before the plugin's `after.lua` (same convention as lazy.nvim's `opts`). Use a hook (`rvpm edit yukimemi/ahdr.nvim --after`) only when the options need a Lua function, which TOML cannot express.
 
 Or with [lazy.nvim](https://github.com/folke/lazy.nvim):
 
