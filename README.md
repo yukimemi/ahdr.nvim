@@ -29,6 +29,9 @@ With [rvpm](https://github.com/yukimemi/rvpm) (recommended):
 
 ```sh
 rvpm add yukimemi/ahdr.nvim --on-cmd '/^Ahdr.*$/'
+
+# ...or let rvpm call setup() for you:
+rvpm add yukimemi/ahdr.nvim --on-cmd '/^Ahdr.*$/' --setup '{}'
 ```
 
 Or in `config.toml`:
@@ -37,10 +40,10 @@ Or in `config.toml`:
 [[plugins]]
 url = "https://github.com/yukimemi/ahdr.nvim"
 on_cmd = ["/^Ahdr.*$/"]
-opts = {}
+setup = {}
 ```
 
-> `setup()` is **optional** — the bundled generators work without it; call `require("ahdr").setup(...)` only to register custom generators. **rvpm >= 3.45.0 handles it for you** — put `opts = {}` (or your options) in the `[[plugins]]` entry and rvpm calls `require("ahdr").setup(<opts>)` right before the plugin's `after.lua` (same convention as lazy.nvim's `opts`). Use a hook (`rvpm edit yukimemi/ahdr.nvim --after`) only when the options need a Lua function, which TOML cannot express.
+> `setup()` is **optional** — the bundled generators work without it; call `require("ahdr").setup(...)` only to register custom generators. **rvpm >= 3.48.0 handles it for you** — give the `[[plugins]]` entry a `setup` field and rvpm calls `require("ahdr").setup(<opts>)` right before the plugin's `after.lua`. `setup = {}` calls it with no options, while `setup = { notify = false }` passes that table through as the options; omit `setup` and rvpm never calls it. Use a hook (`rvpm edit yukimemi/ahdr.nvim --after`) when the options need a Lua function, which TOML cannot express — and when a single setup call needs both plain data and a Lua function, keep the whole call in `after.lua` and omit `setup`. Setting up the same module from both `setup` and a hook is warned about by rvpm.
 
 Or with [lazy.nvim](https://github.com/folke/lazy.nvim):
 
